@@ -36,6 +36,8 @@ class Tirada{
 
 Main ..> Juego
 
+Mapa *--> Territorio
+
 Juego *--> Jugador
 
 Jugador *--> Territorio
@@ -43,6 +45,8 @@ Jugador *--> Territorio
 Territorio *--> Territorio
 
 Territorio --> Jugador
+
+
 
 
 
