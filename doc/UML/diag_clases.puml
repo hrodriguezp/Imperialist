@@ -1,0 +1,50 @@
+@startuml
+
+class Main{
++ void main(String[])
+
+}
+
+class Juego{
+
+}
+
+class Mapa{
+ -Territorios HashMap<Territorio>
+}
+
+class Territorio{
+ - String nombre
+ - Jugador propietario
+ - int ejercitos
+ - List<Territorio> vecinos
+
+}
+
+class Jugador{
+    - String nombre
+}
+
+class Dado{
+
+}
+
+class Tirada{
+
+}
+
+
+Main ..> Juego
+
+Juego *--> Jugador
+
+Jugador *--> Territorio
+
+Territorio *--> Territorio
+
+Territorio --> Jugador
+
+
+
+
+@enduml
