@@ -2,15 +2,15 @@
 
 class Main{
 + void main(String[])
-
 }
 
-class Juego{
+class Ctes{
 
 }
 
 class Mapa{
  -Territorios HashMap<Territorio>
+ +String toString()
 }
 
 class Territorio{
@@ -18,38 +18,60 @@ class Territorio{
  - Jugador propietario
  - int ejercitos
  - List<Territorio> vecinos
-
 }
 
 class Jugador{
     - String nombre
+    - int ejercitosDisponibles
+    - char siglas
 }
 
-class Dado{
+class Jugada{
+    -jugadores ArrayList<Jugador, int>
+    -mapa Mapa
+    -turnoJugador int
+    +void avanzarTurno()
+    +Territorio atacar()
+    +Mapa mostrarMapa()
+    +verVecinos(Territorio)
+    +verTusTerritorios()
+    +colocarEjercitos(Territorio)
+}
 
-
+class Gui{
+    +void mostrarMenu()
+    +int leerOpcion()
 }
 
 class Tirada{
-
+    -Dados ArrayList<Dado>
+    +Tirada()
+    +ordenarDados(ArrayList<Dado>)
+    +compararDados(ArrayList<Dado>)
 }
 
+class Dado{
+    -int Resultado
+    +tirar()
+}
 
-Main ..> Juego
+Main ..> Gui
 
 Mapa *--> Territorio
 
-Juego *--> Jugador
+Gui ..> Jugada
 
-Jugador *--> Territorio
+Jugada *--> Jugador
 
 Territorio *--> Territorio
 
-Territorio --> Jugador
+Territorio *--> Jugador
 
+Jugada ..> Tirada
 
+Tirada *--> Dado
 
-
+Jugada ..> Mapa
 
 
 @enduml
