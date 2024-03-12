@@ -17,6 +17,11 @@ class Territorio{
  - Jugador propietario
  - int ejercitos
  - List<Territorio> vecinos
+ + getNombre()
+ + getPropietario()
+ + setPropietario()
+ + ArrayList<Territorio> vecinos()
+ + String toString()
 }
 
 class Jugador{

@@ -12,6 +12,33 @@ public class Territorio {
         this.propietario = propietario;
         this.numEjercitos = 1;
         this.vecinos = new ArrayList<Territorio>();
+    }
 
+    public String getNombre() {
+        return nombre;
+    }
+
+    public Jugador getPropietario() {
+        return propietario;
+    }
+
+    public void setPropietario(Jugador propietario) {
+        this.propietario = propietario;
+    }
+
+    //TODO
+    public ArrayList<Territorio> vecinos() {
+        return null;
+    }
+
+    //TODO
+    @Override
+    public String toString() {
+        return "Territorio{" +
+                "nombre='" + nombre + '\'' +
+                ", propietario=" + propietario +
+                ", numEjercitos=" + numEjercitos +
+                ", vecinos=" + vecinos +
+                '}';
     }
 }
