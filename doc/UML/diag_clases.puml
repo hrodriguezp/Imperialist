@@ -43,14 +43,18 @@ class Gui{
 }
 
 class Tirada{
-    -Dados ArrayList<Dado>
-    +Tirada()
-    +ordenarDados(ArrayList<Dado>)
-    +compararDados(ArrayList<Dado>)
+    -int valor1
+    -int valor2
+    -int valor3
+    -int numDados
+    +Tirada(int nDados)
+    +void ordenarDados()
+    +int compararTirada(Tirada otra)
+    +int getValor(int Indice)
 }
 
 class Dado{
-    -int Resultado
+    -int resultado
     +tirar()
 }
 
@@ -63,6 +67,8 @@ Gui ..> Jugada
 Jugada *--> Jugador
 
 Territorio *--> Territorio
+
+Tirada *--> Tirada
 
 Territorio *--> Jugador
 
