@@ -1,6 +1,4 @@
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
+import java.io.*;
 import java.util.Scanner;
 
 public class Gui {
@@ -25,7 +23,6 @@ public class Gui {
 
     public void loadWorld() {
         String line;
-        //PATH_TERRITORIOS = "data" + FileSystems.getDefault().getSeparator() + "territorios.txt";
         File file = new File(Ctes.PATH_TERRITORIOS);
         try {
             BufferedReader reader = new BufferedReader(new FileReader(file));
@@ -41,22 +38,22 @@ public class Gui {
             throw new RuntimeException(e);
         } catch (IOException e) {
             throw new RuntimeException(e);
+        }
+    }
 
-    public static String leerIdArticulo() {
+    public static String leerJugador() {
         Scanner scanner = new Scanner(System.in);
-        System.out.print("Identificador del artículo: ");
+        System.out.print("Nombre del jugador: ");
         return scanner.nextLine().trim();
     }
 
-    public static Articulo leerArticulo() {
+    public static Jugador leerJugadores() {
         Scanner scanner = new Scanner(System.in);
-        System.out.printf("%30s: ", "Identificador del artículo");
-        String id = scanner.nextLine().trim();
-        System.out.printf("%30s: ", "Nombre del artículo");
+        System.out.printf("%30s: ", "Nombre del jugador");
         String nombre = scanner.nextLine().trim();
-        System.out.printf("%30s: ", "Precio del artículo");
-        double precio = Double.parseDouble(scanner.nextLine().trim());
-        return new Articulo(id, nombre, precio);
+        System.out.printf("%30s: ", "Siglas del jugador");
+        String siglas = scanner.nextLine().trim();
+        return new Jugador(nombre,siglas);
     }
 
     public static Posicion leerPosicion() {
