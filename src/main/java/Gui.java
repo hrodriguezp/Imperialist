@@ -53,7 +53,7 @@ public class Gui {
         String nombre = scanner.nextLine().trim();
         System.out.printf("%30s: ", "Siglas del jugador");
         String siglas = scanner.nextLine().trim();
-        return new Jugador(nombre,siglas);
+        return new Jugador(nombre);
     }
 
     public static Posicion leerPosicion() {

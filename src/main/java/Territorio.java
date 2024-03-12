@@ -26,6 +26,14 @@ public class Territorio {
         this.propietario = propietario;
     }
 
+    public int getNumEjercitos() {
+        return numEjercitos;
+    }
+
+    public void setNumEjercitos(int numEjercitos) {
+        this.numEjercitos = numEjercitos;
+    }
+
     //TODO
     public ArrayList<Territorio> vecinos() {
         return null;
