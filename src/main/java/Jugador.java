@@ -1,17 +1,12 @@
-import java.util.ArrayList;
-
 public class Jugador {
     private String nombre;
     private String siglas;
     private int ejercitoDisponible;
 
-    private ArrayList<Territorio> territorios;
-
     public Jugador(String nombre) {
         this.nombre = nombre;
-        this.territorios = new ArrayList<>();
 
-    }
+}
 
     public String getNombre() {
         return nombre;
@@ -37,11 +32,6 @@ public class Jugador {
         this.ejercitoDisponible = ejercitoDisponible;
     }
 
-
-    public void agregarTerritorio(Territorio territorio) {
-        territorios.add(territorio);
-    }
-
     public void colocarEjercitos(Territorio territorio, int cantidad) {
         if (ejercitoDisponible >= cantidad) {
             territorio.setEjercitos(territorio.getEjercitos() + cantidad);
@@ -50,10 +40,6 @@ public class Jugador {
             System.out.println("No tienes suficientes ejércitos disponibles.");
         }
     }
-
-
-
-
 
 
     @Override
