@@ -8,6 +8,8 @@ public class Jugador {
 
 }
 
+
+
     public String getNombre() {
         return nombre;
     }
