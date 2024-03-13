@@ -2,13 +2,11 @@ public class Jugador {
     private String nombre;
     private String siglas;
     private int ejercitoDisponible;
-    private int posicion;
 
     public Jugador(String nombre) {
         this.nombre = nombre;
-        this.posicion =0;
-        this.siglas = nombre.toUpperCase().substring(1, 4);
-    }
+
+}
 
 
 
@@ -39,7 +37,7 @@ public class Jugador {
 
     public void colocarEjercitos(Territorio territorio, int cantidad) {
         if (ejercitoDisponible >= cantidad) {
-            territorio.setNumEjercitos(territorio.getNumEjercitos() + cantidad);
+            territorio.setEjercitos(territorio.getEjercitos() + cantidad);
             ejercitoDisponible -= cantidad;
         } else {
             System.out.println("No tienes suficientes ejércitos disponibles.");
