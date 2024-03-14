@@ -8,6 +8,7 @@ public class Mapa {
 
    public Mapa() {
        this.lista = new LinkedHashMap<>();
+       loadWorld();
    }
 
     public void loadWorld() {
@@ -32,6 +33,10 @@ public class Mapa {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public ArrayList<String> getVecinos(String territorio){
+       return (ArrayList<String>) lista.get(territorio);
     }
     @Override
     public String toString() {

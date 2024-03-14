@@ -3,27 +3,18 @@ import java.util.List;
 
 public class Territorio {
     private String nombre;
-    private Jugador propietario;
     private int numEjercitos;
-    private ArrayList<Territorio> vecinos;
+    private ArrayList<String> vecinos;
 
-    public Territorio(String nombre, Jugador propietario, List<Territorio> vecinos) {
+    public Territorio(String nombre) {
         this.nombre = nombre;
-        this.propietario = propietario;
         this.numEjercitos = 1;
-        this.vecinos = new ArrayList<Territorio>();
+        Mapa mapa = new Mapa();
+        vecinos = mapa.getVecinos(nombre);
     }
 
     public String getNombre() {
         return nombre;
-    }
-
-    public Jugador getPropietario() {
-        return propietario;
-    }
-
-    public void setPropietario(Jugador propietario) {
-        this.propietario = propietario;
     }
 
     public int getNumEjercitos() {
@@ -36,7 +27,12 @@ public class Territorio {
 
     //TODO
     public ArrayList<Territorio> vecinos() {
-        return null;
+        ArrayList<Territorio> vecinosCast = new ArrayList<Territorio>();
+        for (String s : vecinos) {
+            Territorio territorio = new Territorio(s);
+            vecinosCast.add(territorio);
+        }
+        return vecinosCast;
     }
 
     //TODO
@@ -44,7 +40,7 @@ public class Territorio {
     public String toString() {
         return "Territorio{" +
                 "nombre='" + nombre + '\'' +
-                ", propietario=" + propietario +
+                ", propietario=" +
                 ", numEjercitos=" + numEjercitos +
                 ", vecinos=" + vecinos +
                 '}';

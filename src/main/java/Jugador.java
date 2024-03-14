@@ -5,7 +5,6 @@ public class Jugador {
     private String siglas;
     private int ejercitoDisponible;
     private int posicion;
-
     private ArrayList<Territorio> territorios = new ArrayList<>();
 
 
@@ -14,11 +13,11 @@ public class Jugador {
         this.posicion = posicion;
         this.siglas = nombre.toUpperCase().substring(1,4);
 }
-public Jugador(String nombre) {
+    public Jugador(String nombre) {
         this.nombre = nombre;
         this.posicion = 0;
         this.siglas = nombre.toUpperCase().substring(1,4);
-}
+    }
 
     public String getNombre() {
         return nombre;
@@ -52,9 +51,9 @@ public Jugador(String nombre) {
             System.out.println("No tienes ejércitos disponibles.");
         }
     }
-
-
-
+    public void addTerritorios(Territorio territorio){
+        territorios.add(territorio);
+    }
     @Override
     public String toString() {
         return "Jugador{" +
