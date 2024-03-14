@@ -14,6 +14,11 @@ public class Jugador {
         this.posicion = posicion;
         this.siglas = nombre.toUpperCase().substring(1,4);
 }
+public Jugador(String nombre) {
+        this.nombre = nombre;
+        this.posicion = 0;
+        this.siglas = nombre.toUpperCase().substring(1,4);
+}
 
     public String getNombre() {
         return nombre;
