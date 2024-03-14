@@ -1,12 +1,17 @@
+import java.util.ArrayList;
+
 public class Jugador {
     private String nombre;
     private String siglas;
     private int ejercitoDisponible;
     private int posicion;
 
-    public Jugador(String nombre) {
+    private ArrayList<Territorio> territorios = new ArrayList<>();
+
+
+    public Jugador(String nombre, int posicion) {
         this.nombre = nombre;
-        this.posicion = 0;
+        this.posicion = posicion;
         this.siglas = nombre.toUpperCase().substring(1,4);
 }
 
