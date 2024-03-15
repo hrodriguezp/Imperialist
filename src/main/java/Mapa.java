@@ -39,6 +39,9 @@ public class Mapa {
         lista.put(territorioPrincipal, new ArrayList<>(vecinos));
     }
 
+    public List<String> getTerritorios() {
+        return new ArrayList<>(lista.keySet());
+    }
 
     public ArrayList<String> getVecinos(String territorio){
        return (ArrayList<String>) lista.get(territorio);

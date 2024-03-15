@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.Scanner;
 
 public class Juego {
@@ -73,11 +75,44 @@ public class Juego {
         this.turno = turno;
     }
 
+        //Es para saber cuantos ejercitos tiene cada jugador igual no va en esta clase.
+    private int obtenerEjercitosPorJugador(int numJugadores) {
+        int ejercitosTotales = 0;
+        switch (numJugadores) {
+            case 2:
+                ejercitosTotales = 40;
+                break;
+            case 3:
+                ejercitosTotales = 35;
+                break;
+            case 4:
+                ejercitosTotales = 30;
+                break;
+            case 5:
+                ejercitosTotales = 25;
+                break;
+            case 6:
+                ejercitosTotales = 20;
+                break;
+        }
+        return ejercitosTotales / numJugadores;
+    }
+
 
 
     public void repartirTerritorios() {
         //TODO
-        mapa.
+        mapa = new Mapa();
+        List<String> territorios = mapa.getTerritorios();
+        Collections.shuffle(territorios);
+        int numJugadores = jugadores.size();
+        int indexTerritorio = 0;
+        for (String territorio : territorios) {
+            Jugador jugadorActual = jugadores.get(indexTerritorio % numJugadores);
+            Territorio terr = new Territorio(territorio);
+            jugadorActual.addTerritorios(terr);
+            indexTerritorio++;
+        }
     }
 
 
