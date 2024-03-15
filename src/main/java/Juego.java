@@ -75,31 +75,6 @@ public class Juego {
         this.turno = turno;
     }
 
-        //Es para saber cuantos ejercitos tiene cada jugador igual no va en esta clase.
-    private int obtenerEjercitosPorJugador(int numJugadores) {
-        int ejercitosTotales = 0;
-        switch (numJugadores) {
-            case 2:
-                ejercitosTotales = 40;
-                break;
-            case 3:
-                ejercitosTotales = 35;
-                break;
-            case 4:
-                ejercitosTotales = 30;
-                break;
-            case 5:
-                ejercitosTotales = 25;
-                break;
-            case 6:
-                ejercitosTotales = 20;
-                break;
-        }
-        return ejercitosTotales / numJugadores;
-    }
-
-
-
     public void repartirTerritorios() {
         //TODO
         mapa = new Mapa();
