@@ -35,6 +35,11 @@ public class Mapa {
         }
     }
 
+    public void agregarTerritorio(String territorioPrincipal, List<String> vecinos) {
+        lista.put(territorioPrincipal, new ArrayList<>(vecinos));
+    }
+
+
     public ArrayList<String> getVecinos(String territorio){
        return (ArrayList<String>) lista.get(territorio);
     }
