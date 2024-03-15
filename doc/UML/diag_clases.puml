@@ -84,4 +84,7 @@ Tirada *--> Dado
 Jugada ..> Mapa
 
 
+Ctes --> Jugada
+
+
 @enduml
