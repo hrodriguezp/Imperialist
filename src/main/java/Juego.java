@@ -81,12 +81,12 @@ public class Juego {
         List<String> territorios = mapa.getTerritorios();
         Collections.shuffle(territorios);
         int numJugadores = jugadores.size();
-        int indexTerritorio = 0;
+        int numTerritorio = 0;
         for (String territorio : territorios) {
-            Jugador jugadorActual = jugadores.get(indexTerritorio % numJugadores);
+            Jugador jugadorActual = jugadores.get(numTerritorio % numJugadores);
             Territorio terr = new Territorio(territorio);
             jugadorActual.addTerritorios(terr);
-            indexTerritorio++;
+            numTerritorio++;
         }
     }
 
