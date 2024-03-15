@@ -33,6 +33,10 @@ public class Mapa {
             throw new RuntimeException(e);
         }
     }
+
+    public void agregarTerritorio(String territorioPrincipal, List<String> vecinos) {
+        lista.put(territorioPrincipal, new ArrayList<>(vecinos));
+    }
     @Override
     public String toString() {
         return lista.toString();
