@@ -1,4 +1,5 @@
 import java.io.*;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Gui {
@@ -27,13 +28,19 @@ public class Gui {
         return scanner.nextLine().trim();
     }
 
-    public static Jugador leerJugadores() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.printf("%30s: ", "Nombre del jugador");
-        String nombre = scanner.nextLine().trim();
-        System.out.printf("%30s: ", "Siglas del jugador");
-        String siglas = scanner.nextLine().trim();
-        return new Jugador(nombre);
+    public static ArrayList<Jugador> leerJugadores() {
+        Scanner teclado = new Scanner(System.in);
+
+        System.out.print("Cuántos jugadores: ");
+        int numJugadores = Integer.parseInt(teclado.nextLine());
+
+        ArrayList<Jugador> jugadores = new ArrayList<>();
+        for (int i = 0; i <= numJugadores; i++) {
+            System.out.print("Nombre del jugador " + i + ":");
+            String nombre = teclado.nextLine();
+            jugadores.add(new Jugador(nombre, i));
+        }
+        return jugadores;
     }
 
     public static Posicion leerPosicion() {
