@@ -20,7 +20,7 @@ public class Juego {
         int numOpc;
         boolean bExit = false;
 
-        Loader.cargarDatos(mapa);
+        mapa.loadWorld();
 
         while (!bExit) {
             Gui.mostrarMenu();
