@@ -21,9 +21,9 @@ public class Gui {
         return scanner.nextInt();
     }
 
-    public static String leerJugador() {
+    public static String leerVecinos() {
         Scanner scanner = new Scanner(System.in);
-        System.out.print("Nombre del jugador: ");
+        System.out.print("Territorio: ");
         return scanner.nextLine().trim();
     }
 
