@@ -25,7 +25,7 @@ public class Territorio {
         this.numEjercitos = numEjercitos;
     }
 
-    //TODO
+
     public ArrayList<Territorio> vecinos() {
         ArrayList<Territorio> vecinosCast = new ArrayList<Territorio>();
         for (String s : vecinos) {
