@@ -15,4 +15,10 @@ public class Ctes {
 //    public static final int NUM_TERRITORIOS5 = 8;
     public static final int NUM_TERRITORIOS6 = 7;
 
+    public static final int OPC_EXIT = 0;
+    public static final int OPC_MAPA = 1;
+    public static final int OPC_TERRITORIOS = 2;
+    public static final int OPC_VECINOS = 3;
+    public static final int OPC_ATACAR = 4;
+
 }

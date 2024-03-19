@@ -50,10 +50,10 @@ public class Mapa {
     public String toString() {
         return lista.toString();
     }
-    public static void main(String[] args) {
-        Mapa mapa = new Mapa();
-        mapa.loadWorld();
-        System.out.println(mapa.toString());
+    public void pintar(){
+        for (String s : lista.keySet()) {
+            System.out.println(lista.get(s));
+        }
     }
 }
 

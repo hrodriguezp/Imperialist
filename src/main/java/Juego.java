@@ -1,7 +1,4 @@
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class Juego {
 
@@ -14,6 +11,56 @@ public class Juego {
 
     // endregion
 
+    public Juego() {
+        this.mapa = new Mapa();
+        jugadores = Gui.leerJugadores();
+    }
+
+    public void run() {
+        int numOpc;
+        boolean bExit = false;
+
+        Loader.cargarDatos(mapa);
+
+        while (!bExit) {
+            Gui.mostrarMenu();
+            numOpc = Gui.leerOpcion();
+            bExit= ejecutarOpcion(numOpc);
+        }
+
+    }
+
+    private boolean ejecutarOpcion(int numOpc) {
+        switch (numOpc) {
+            case Ctes.OPC_EXIT:
+                return true;
+            case Ctes.OPC_MAPA:
+                mostrarMapa();
+                return false;
+            case Ctes.OPC_TERRITORIOS:
+                mostrarTerritorios();
+                return false;
+            case Ctes.OPC_VECINOS:
+                String territorio = Gui.leerVecinos();
+                mostrarVecinos(territorio);
+                return false;
+            case Ctes.OPC_ATACAR:
+                atacar();
+                return false;
+            default:
+                return false;
+        }
+    }
+    private void mostrarMapa() {
+        mapa.pintar();
+    }
+    private void mostrarTerritorios() {
+
+    }
+    private ArrayList<String> mostrarVecinos(String territorio) {
+        return mapa.getVecinos(territorio);
+    }
+
 
 //    public void presentacion() {
 //        int n = 93, m = 33;
@@ -24,59 +71,37 @@ public class Juego {
 //    }
 
     public void crearJugadores() {
-        int numJugadores;
-        String nombre;
-        Scanner teclado = new Scanner(System.in);
-
-        System.out.print("Cuántos jugadores: ");
-        numJugadores = Integer.parseInt(teclado.nextLine());
-
-        jugadores = new ArrayList<>();
-        for (int i = 0; i <= numJugadores; i++) {
-            System.out.print("Nombre del jugador " + i + ":");
-            nombre = teclado.nextLine();
-            jugadores.add(new Jugador(nombre, i));
-            switch (numJugadores){
-                case 2:
-                    jugadores.get(i).setEjercitoDisponible(Ctes.NUM_EJERCITOS2);
-                case 3:
-                    jugadores.get(i).setEjercitoDisponible(Ctes.NUM_EJERCITOS3);
-                case 4:
-                    jugadores.get(i).setEjercitoDisponible(Ctes.NUM_EJERCITOS4);
-                case 5:
-                    jugadores.get(i).setEjercitoDisponible(Ctes.NUM_EJERCITOS5);
-                case 6:
-                    jugadores.get(i).setEjercitoDisponible(Ctes.NUM_EJERCITOS6);
+        switch (jugadores.size()) {
+            case 2 -> {
+                for (Jugador jugador : jugadores) {
+                    jugador.setEjercitoDisponible(Ctes.NUM_EJERCITOS2);
+                }
+            }
+            case 3 -> {
+                for (Jugador jugador : jugadores) {
+                    jugador.setEjercitoDisponible(Ctes.NUM_EJERCITOS3);
+                }
+            }
+            case 4 -> {
+                for (Jugador jugador : jugadores) {
+                    jugador.setEjercitoDisponible(Ctes.NUM_EJERCITOS4);
+                }
+            }
+            case 5 -> {
+                for (Jugador jugador : jugadores) {
+                    jugador.setEjercitoDisponible(Ctes.NUM_EJERCITOS5);
+                }
+            }
+            case 6 -> {
+                for (Jugador jugador : jugadores) {
+                    jugador.setEjercitoDisponible(Ctes.NUM_EJERCITOS6);
+                }
             }
         }
-
-
-        System.out.println();
-    }
-
-
-    public int numeroJugadores() {
-        return jugadores.size();
-    }
-
-    public void setJugadores(ArrayList<Jugador> jugadores) {
-        this.jugadores = jugadores;
-    }
-
-    public Jugador getJugador(int numeroJugador) {
-        return jugadores.get(numeroJugador);
-    }
-
-    public int getTurno() {
-        return turno;
-    }
-
-    public void setTurno(int turno) {
-        this.turno = turno;
     }
 
     public void repartirTerritorios() {
-        //TODO
+        //TODO: Sin terminar
         mapa = new Mapa();
         List<String> territorios = mapa.getTerritorios();
         Collections.shuffle(territorios);
@@ -99,10 +124,15 @@ public class Juego {
     public void jugarJugada() {
         //TODO Jugada de un jugador activo
     }
+    public int getTurno() {
+        return turno;
+    }
 
-
+    public void setTurno(int turno) {
+        this.turno = turno;
+    }
     private void avanzarTurno() {
-        if (turno + 1 == numeroJugadores()) {
+        if (turno + 1 == jugadores.size()) {
             turno = 0;
         }
         turno++;
