@@ -4,14 +4,21 @@ import java.util.List;
 public class Territorio {
     private String nombre;
     private int numEjercitos;
-    private ArrayList<String> vecinos;
+    private ArrayList<Territorio> vecinos;
 
     public Territorio(String nombre) {
         this.nombre = nombre;
         this.numEjercitos = 1;
-        Mapa mapa = new Mapa();
-        vecinos = mapa.getVecinos(nombre);
+        vecinos = null;
     }
+
+    public Territorio(String nombre, ArrayList<Territorio> vecinos){
+        this.nombre=nombre;
+        numEjercitos= 1;
+        this.vecinos = vecinos;
+    }
+
+
 
     public String getNombre() {
         return nombre;
@@ -25,11 +32,14 @@ public class Territorio {
         this.numEjercitos = numEjercitos;
     }
 
+    public void setVecinos(ArrayList<Territorio> vecinos){
+        this.vecinos = vecinos;
+    }
 
-    public ArrayList<Territorio> vecinos() {
+    public ArrayList<Territorio> getVecinos() {
         ArrayList<Territorio> vecinosCast = new ArrayList<Territorio>();
-        for (String s : vecinos) {
-            Territorio territorio = new Territorio(s);
+        for (Territorio s : vecinos) {
+            Territorio territorio = new Territorio(s.getNombre());
             vecinosCast.add(territorio);
         }
         return vecinosCast;
