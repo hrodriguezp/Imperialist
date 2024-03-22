@@ -5,21 +5,36 @@ class Main{
 }
 
 class Ctes{
++ String PATH_TERRITORIOS
++ String EXP_TERITORIO_SPLITER
++ int NUM_EJERCITO2
++ int NUM_EJERCITO3
++ int NUM_EJERCITO4
++ int NUM_EJERCITO5
++ int NUM_EJERCITO6
++ int NUM_TERRITORIO2
++ int NUM_TERRITORIO3
++ int NUM_TERRITORIO4
++ int NUM_TERRITORIO5
++ int NUM_TERRITORIO6
 }
 
 class Mapa{
  -Territorios HashMap<Territorio>
+ + void loadWorld()
+ + void agregarTerritorio()
+ + void getTerritorio()
+ + void getVecinos()
  +String toString()
 }
 
 class Territorio{
  - String nombre
- - Jugador propietario
  - int ejercitos
  - List<Territorio> vecinos
- + getNombre()
- + getPropietario()
- + setPropietario()
+ + String getNombre()
+ + int getNumEjercitos()
+ + void setNumEjercitos()
  + ArrayList<Territorio> vecinos()
  + String toString()
 }
@@ -27,24 +42,33 @@ class Territorio{
 class Jugador{
     - String nombre
     - int ejercitosDisponibles
-    - char siglas
+    - String siglas
+    - int posicion
+    + void setEjercitoDisponible()
+    + void addTerritorios()
+    + String toString()
 }
 
-class Jugada{
-    -jugadores ArrayList<Jugador, int>
+class Juego{
+    -jugadores ArrayList<Jugador>
     -mapa Mapa
-    -turnoJugador int
+    -int turno
+    +void crearJugadores()
+    +int numeroJugadores()
+    +void repartirTerritorios()
+    +void jugar()
+    +void jugarJugada()
     +void avanzarTurno()
-    +Territorio atacar()
-    +Mapa mostrarMapa()
-    +verVecinos(Territorio)
-    +verTusTerritorios()
-    +colocarEjercitos(Territorio)
+
 }
 
 class Gui{
     +void mostrarMenu()
     +int leerOpcion()
+    +int leerJugador()
+    +int leerJugadores()
+    +int leerPosicion()
+    +int leerConfirmacion()
 }
 
 class Tirada{
@@ -52,14 +76,15 @@ class Tirada{
     -int valor2
     -int valor3
     -int numDados
-    +Tirada(int nDados)
+    +Tirada(int numDados)
     +void ordenarDados()
-    +int compararTirada(Tirada otra)
     +int getValor(int Indice)
+     +int compararTirada(Tirada otra)
 }
 
 class Dado{
-    -int resultado
+    -int valor
+    +getValor()
     +tirar()
 }
 
@@ -67,9 +92,9 @@ Main ..> Gui
 
 Mapa *--> Territorio
 
-Gui ..> Jugada
+Gui ..> Juego
 
-Jugada *--> Jugador
+Juego *--> Jugador
 
 Territorio *--> Territorio
 
@@ -77,14 +102,14 @@ Tirada *--> Tirada
 
 Territorio *--> Jugador
 
-Jugada ..> Tirada
+Juego ..> Tirada
 
 Tirada *--> Dado
 
-Jugada ..> Mapa
+Juego ..> Mapa
 
 
-Ctes --> Jugada
+Ctes --> Juego
 
 
 @enduml

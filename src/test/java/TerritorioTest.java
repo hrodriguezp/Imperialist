@@ -21,13 +21,13 @@ class TerritorioTest {
 
     @Test
     void testSetNumEjercitos() {
-        territorio.setNumEjercitos(10);
-        assertEquals(10, territorio.getNumEjercitos());
+        territorio.setNumEjercitos(Ctes.NUM_EJERCITOS4);
+        assertEquals(30, territorio.getNumEjercitos());
     }
 
     @Test
     void testVecinos() {
-        List<Territorio> vecinos = territorio.vecinos();
+        List<Territorio> vecinos = territorio.getVecinos();
         assertEquals(2, vecinos.size());
         assertEquals("Kamchatka", vecinos.get(0).getNombre());
         assertEquals("Mongolia", vecinos.get(1).getNombre());
