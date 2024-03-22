@@ -9,11 +9,11 @@ public class Mapa {
 
 
     public Mapa() {
-       this.lista = new LinkedHashMap<>();
-       this.nombres = new LinkedHashMap<>();
-       this.tPrincipal = new ArrayList<>();
-       loadWorld();
-   }
+        this.lista = new LinkedHashMap<>();
+        this.nombres = new LinkedHashMap<>();
+        this.tPrincipal = new ArrayList<>();
+        loadWorld();
+    }
 
 //    public void loadWorld() {
 //        String line;
@@ -101,7 +101,7 @@ public class Mapa {
     }
 
     public ArrayList<String> getVecinos(String territorio){
-       return (ArrayList<String>) nombres.get(territorio);
+        return (ArrayList<String>) nombres.get(territorio);
     }
     @Override
     public String toString() {
@@ -116,4 +116,4 @@ public class Mapa {
     public static void main(String[] args) {
         Mapa mapa = new Mapa();
     }
-    }
+}
