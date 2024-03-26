@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Tirada {
 
     private int valor1;
@@ -8,6 +10,9 @@ public class Tirada {
     public Tirada(int numDados) {
         this.numDados = numDados;
         Dado dado = new Dado();
+        this.valor1 = 0;
+        this.valor2 = 0;
+        this.valor3 = 0;
         if (numDados >= 1) {
             dado.tirar();
             valor1 = dado.getValor();
@@ -56,9 +61,15 @@ public class Tirada {
         int perdidas = 0;
         if (valor1 <= otra.getValor(1)) {
             perdidas++;
+        }else {
+            perdidas--;
         }
-        if (valor2 <= otra.getValor(2)) {
-            perdidas++;
+        if (valor2 != 0 && otra.valor2 != 0) {
+            if (valor2 <= otra.getValor(2)) {
+                perdidas++;
+            } else {
+                perdidas--;
+            }
         }
         return perdidas;
     }

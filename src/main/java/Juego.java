@@ -131,12 +131,29 @@ public class Juego {
     public void atacar(Territorio territorio, Territorio territorioAtacado){
         Jugador jActivo = jugadores.get(turno);
         ArrayList<Territorio> territorios = jActivo.getTerritorios();
-        for (int i = 0; i < territorios.size(); i++) {
-            if (territorios.get(i) == territorio){
-                for (int j = 0; j < territorio.getVecinos().size(); j++) {
-                    if (territorio.getVecinos().get(j) == territorioAtacado){
+            if (territorios.contains(territorio)){
+                    if (territorio.getVecinos().contains(territorioAtacado)){
                      //TODO
-                    }
+                        while (territorio.getNumEjercitos() > 0 || territorioAtacado.getNumEjercitos() > 0){
+                            int atacante = territorio.getNumEjercitos();
+                            if (atacante >= 3){
+                                    atacante = 3;
+                            }
+                            int defensor = territorioAtacado.getNumEjercitos();
+                            if (defensor >=2) {
+                                defensor = 2;
+                            }
+                            Tirada tiradaAtaque = new Tirada(atacante);
+                            Tirada tiradaDefensa = new Tirada(defensor);
+                            int resultado = tiradaAtaque.compararTirada(tiradaDefensa);
+                            switch (resultado){
+                                case -2:
+
+                                case -1:
+                                case -0:
+                                case 1:
+                                case 2:
+                            }
                 }
             }
         }
