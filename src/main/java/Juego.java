@@ -70,6 +70,8 @@ public class Juego {
 //        System.out.println("~".repeat(n));
 //    }
 
+
+
     public void crearJugadores() {
         switch (jugadores.size()) {
             case 2 -> {
@@ -123,7 +125,23 @@ public class Juego {
 
     public void jugarJugada() {
         //TODO Jugada de un jugador activo
+        avanzarTurno();
     }
+
+    public void atacar(Territorio territorio, Territorio territorioAtacado){
+        Jugador jActivo = jugadores.get(turno);
+        ArrayList<Territorio> territorios = jActivo.getTerritorios();
+        for (int i = 0; i < territorios.size(); i++) {
+            if (territorios.get(i) == territorio){
+                for (int j = 0; j < territorio.getVecinos().size(); j++) {
+                    if (territorio.getVecinos().get(j) == territorioAtacado){
+                     //TODO
+                    }
+                }
+            }
+        }
+    }
+
     public int getTurno() {
         return turno;
     }

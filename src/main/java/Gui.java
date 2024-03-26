@@ -36,9 +36,9 @@ public class Gui {
 
         ArrayList<Jugador> jugadores = new ArrayList<>();
         for (int i = 0; i <= numJugadores; i++) {
-            System.out.print("Nombre del jugador " + i + ":");
+            System.out.print("Nombre del jugador " + ":");
             String nombre = teclado.nextLine();
-            jugadores.add(new Jugador(nombre, i));
+            jugadores.add(new Jugador(nombre));
         }
         return jugadores;
     }

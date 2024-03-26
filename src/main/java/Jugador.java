@@ -4,19 +4,20 @@ public class Jugador {
     private String nombre;
     private String siglas;
     private int ejercitoDisponible;
-    private int posicion;
     private ArrayList<Territorio> territorios = new ArrayList<>();
 
 
-    public Jugador(String nombre, int posicion) {
-        this.nombre = nombre;
-        this.posicion = posicion;
-        this.siglas = nombre.toUpperCase().substring(1,4);
-}
     public Jugador(String nombre) {
         this.nombre = nombre;
-        this.posicion = 0;
         this.siglas = nombre.toUpperCase().substring(1,4);
+}
+
+    public ArrayList<Territorio> getTerritorios() {
+        return territorios;
+    }
+
+    public void setTerritorios(ArrayList<Territorio> territorios) {
+        this.territorios = territorios;
     }
 
     public String getNombre() {

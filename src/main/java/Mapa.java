@@ -60,7 +60,6 @@ public class Mapa {
             while ( (line = reader.readLine()) != null ) {
                 if (line.isEmpty()) { continue; }
                 String[] a = line.split(Ctes.EXP_TERRITORIO_SPLITTER);
-                // ...
                 String [] st = a[0].split(":");
                 String territorioPrincipal = st[0];
                 tPrincipal.add(territorioPrincipal);
