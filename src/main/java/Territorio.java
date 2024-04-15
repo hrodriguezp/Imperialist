@@ -18,6 +18,10 @@ public class Territorio {
         this.vecinos = vecinos;
     }
 
+    private void loadVecinos(){
+        // TODO: Llmar a la clase mapa y cargarle a cada uno de los territorios sus vecinos correspodientes
+    }
+
 
     public void atacarTerritorio(int tPerdidas){
         this.numEjercitos -= tPerdidas;
