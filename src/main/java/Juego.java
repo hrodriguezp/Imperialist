@@ -128,35 +128,53 @@ public class Juego {
         avanzarTurno();
     }
 
-    public void atacar(Territorio territorio, Territorio territorioAtacado){
+    public void atacar(){
+        ArrayList<Territorio> extraerTerritorios = Gui.leerAtaque();
+        Territorio territorio = extraerTerritorios.get(0);
+        Territorio territorioAtacado = extraerTerritorios.get(1);
         Jugador jActivo = jugadores.get(turno);
         ArrayList<Territorio> territorios = jActivo.getTerritorios();
             if (territorios.contains(territorio)){
                     if (territorio.getVecinos().contains(territorioAtacado)){
                      //TODO
                         while (territorio.getNumEjercitos() > 0 || territorioAtacado.getNumEjercitos() > 0){
-                            int atacante = territorio.getNumEjercitos();
-                            if (atacante >= 3){
-                                    atacante = 3;
-                            }
-                            int defensor = territorioAtacado.getNumEjercitos();
-                            if (defensor >=2) {
-                                defensor = 2;
-                            }
-                            Tirada tiradaAtaque = new Tirada(atacante);
-                            Tirada tiradaDefensa = new Tirada(defensor);
-                            int resultado = tiradaAtaque.compararTirada(tiradaDefensa);
+                            int resultado = getResultado(territorio, territorioAtacado);
                             switch (resultado){
-                                case -2:
-
-                                case -1:
-                                case -0:
-                                case 1:
                                 case 2:
+                                    territorio.atacarTerritorio(2);
+                                    break;
+                                case 1:
+                                    territorio.atacarTerritorio(1);
+                                    break;
+                                case 0:
+                                    territorio.atacarTerritorio(1);
+                                    territorioAtacado.atacarTerritorio(1);
+                                    break;
+                                case -1:
+                                    territorioAtacado.atacarTerritorio(1);
+                                    break;
+                                case -2:
+                                    territorioAtacado.atacarTerritorio(2);
+                                    break;
                             }
                 }
             }
         }
+    }
+
+    private static int getResultado(Territorio territorio, Territorio territorioAtacado) {
+        int atacante = territorio.getNumEjercitos();
+        if (atacante >= 3){
+                atacante = 3;
+        }
+        int defensor = territorioAtacado.getNumEjercitos();
+        if (defensor >=2) {
+            defensor = 2;
+        }
+        Tirada tiradaAtaque = new Tirada(atacante);
+        Tirada tiradaDefensa = new Tirada(defensor);
+        int resultado = tiradaAtaque.compararTirada(tiradaDefensa);
+        return resultado;
     }
 
     public int getTurno() {

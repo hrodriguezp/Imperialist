@@ -43,14 +43,14 @@ public class Gui {
         return jugadores;
     }
 
-    public static Posicion leerPosicion() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.printf("%22s: ", "Número de la fila");
-        int numeroFila = scanner.nextInt();
-        System.out.printf("%22s: ", "Número de la columna");
-        int numeroColumna = scanner.nextInt();
-        return new Posicion(numeroFila, numeroColumna);
-    }
+//    public static Posicion leerPosicion() {
+//        Scanner scanner = new Scanner(System.in);
+//        System.out.printf("%22s: ", "Número de la fila");
+//        int numeroFila = scanner.nextInt();
+//        System.out.printf("%22s: ", "Número de la columna");
+//        int numeroColumna = scanner.nextInt();
+//        return new Posicion(numeroFila, numeroColumna);
+//    }
 
     public static boolean leerConfirmacion(String txt, String iniConfirmacion) {
         Scanner scanner = new Scanner(System.in);
@@ -59,4 +59,27 @@ public class Gui {
         return respuesta.toUpperCase().startsWith(iniConfirmacion.toUpperCase());
     }
 
+    /*
+    Este metodo debe extraer los territorios que se van a enfrentar
+    uno del atacante y uno del atacado, ademas de hacer las comprobaciones necesarias
+    como si los territorios son vecinos, si tienen las tropas necesarias etc.
+     */
+
+    public static ArrayList<Territorio> leerAtaque() {
+        System.out.println("Selecciona de tus territorios el que quieras usar para atacar");
+        /*
+        Sout(territorios del usuario activo)
+        Scanner(territorio que va a usar para atacar)
+        Comprobaciones de que el territorio es del usuario activo y tiene mas de una tropa en el.
+         */
+        System.out.println("Selecciona el territorio que quieres atacar");
+        /*
+        Sout(Lista de vecinos)
+        Scannner(Territorio vecino que va aatacar)
+        Comprobaciones de que el territorio que se va a atacar sea vecino y que sea de un jugador distinto al activo
+         */
+        //TODO
+        ArrayList<Territorio> territorios = new ArrayList<>();
+        return territorios;
+    }
 }

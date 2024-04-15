@@ -19,7 +19,9 @@ public class Territorio {
     }
 
 
-
+    public void atacarTerritorio(int tPerdidas){
+        this.numEjercitos -= tPerdidas;
+    }
     public String getNombre() {
         return nombre;
     }
