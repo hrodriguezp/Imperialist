@@ -4,12 +4,13 @@ public class Jugador {
     private String nombre;
     private String siglas;
     private int ejercitoDisponible;
-    private ArrayList<Territorio> territorios = new ArrayList<>();
+    private ArrayList<Territorio> territorios;
 
 
     public Jugador(String nombre) {
         this.nombre = nombre;
         this.siglas = nombre.toUpperCase().substring(1,4);
+        this.territorios = new ArrayList<>();
 }
 
     public ArrayList<Territorio> getTerritorios() {
@@ -44,7 +45,7 @@ public class Jugador {
         this.ejercitoDisponible = ejercitoDisponible;
     }
 
-    public void colocarEjercitos(Territorio territorio, int cantidad) {
+    public void colocarEjercitosPrincipio(Territorio territorio, int cantidad) {
         if (ejercitoDisponible >= cantidad) {
             territorio.setNumEjercitos(territorio.getNumEjercitos() + cantidad);
             ejercitoDisponible -= cantidad;

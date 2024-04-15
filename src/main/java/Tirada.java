@@ -2,6 +2,7 @@ import java.util.ArrayList;
 
 public class Tirada {
 
+    private Dado dado;
     private int valor1;
     private int valor2;
     private int valor3;
@@ -9,10 +10,15 @@ public class Tirada {
 
     public Tirada(int numDados) {
         this.numDados = numDados;
-        Dado dado = new Dado();
+        this.dado = new Dado();
         this.valor1 = 0;
         this.valor2 = 0;
         this.valor3 = 0;
+        comprobacionNumDados();
+        ordenarDados();
+    }
+
+    private void comprobacionNumDados(){
         if (numDados >= 1) {
             dado.tirar();
             valor1 = dado.getValor();
@@ -25,7 +31,6 @@ public class Tirada {
             dado.tirar();
             valor3 = dado.getValor();
         }
-        ordenarDados();
     }
 
     private void ordenarDados() {
