@@ -45,12 +45,13 @@ public class Territorio {
     }
 
     public ArrayList<Territorio> getVecinos() {
-        ArrayList<Territorio> vecinosCast = new ArrayList<Territorio>();
-        for (Territorio s : vecinos) {
-            Territorio territorio = new Territorio(s.getNombre());
-            vecinosCast.add(territorio);
-        }
-        return vecinosCast;
+//        ArrayList<Territorio> vecinosCast = new ArrayList<Territorio>();
+//        for (Territorio s : vecinos) {
+//            Territorio territorio = new Territorio(s.getNombre());
+//            vecinosCast.add(territorio);
+//        }
+//        return vecinosCast;
+        return vecinos;
     }
 
     public ArrayList<String> getNombresVecinos() {
@@ -62,7 +63,10 @@ public class Territorio {
         return vecinosCast;
     }
 
-
+    public void addVecino(String nVecino) {
+        Territorio territorio = new Territorio(nVecino);
+        vecinos.add(territorio);
+    }
 
     //TODO
     @Override
@@ -74,4 +78,6 @@ public class Territorio {
                 ", vecinos=" + vecinos +
                 '}';
     }
+
+
 }
