@@ -9,17 +9,19 @@ public class Territorio {
     public Territorio(String nombre) {
         this.nombre = nombre;
         this.numEjercitos = 1;
-        vecinos = null;
+        loadVecinos();
     }
 
     public Territorio(String nombre, ArrayList<Territorio> vecinos){
         this.nombre=nombre;
         numEjercitos= 1;
         this.vecinos = vecinos;
+
     }
 
     private void loadVecinos(){
-        // TODO: Llmar a la clase mapa y cargarle a cada uno de los territorios sus vecinos correspodientes
+        Mapa map = new Mapa();
+        vecinos = map.getVecinos(nombre);
     }
 
 
@@ -47,6 +49,15 @@ public class Territorio {
         for (Territorio s : vecinos) {
             Territorio territorio = new Territorio(s.getNombre());
             vecinosCast.add(territorio);
+        }
+        return vecinosCast;
+    }
+
+    public ArrayList<String> getNombresVecinos() {
+        ArrayList<String> vecinosCast = new ArrayList<String>();
+        for (Territorio s : vecinos) {
+            Territorio territorio = new Territorio(s.getNombre());
+            vecinosCast.add(territorio.getNombre());
         }
         return vecinosCast;
     }

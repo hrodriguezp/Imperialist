@@ -57,7 +57,7 @@ public class Juego {
     private void mostrarTerritorios() {
 
     }
-    private ArrayList<String> mostrarVecinos(String territorio) {
+    private ArrayList<Territorio> mostrarVecinos(String territorio) {
         return mapa.getVecinos(territorio);
     }
 

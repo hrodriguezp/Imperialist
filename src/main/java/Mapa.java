@@ -3,17 +3,22 @@ import java.util.*;
 
 public class Mapa {
 
-    private Map<String, Territorio> lista;
-    private Map<String, List<String>> nombres;
-    private ArrayList<String> tPrincipal;
+    private Map<String, Territorio> mapaNombresTerritorios;
+   // private Map<String, List<String>> nombres;
+    //private ArrayList<String> tPrincipal;
 
 
     public Mapa() {
-        this.lista = new LinkedHashMap<>();
-        this.nombres = new LinkedHashMap<>();
-        this.tPrincipal = new ArrayList<>();
+        this.mapaNombresTerritorios = new LinkedHashMap<>();
+       // this.nombres = new LinkedHashMap<>();
+       // this.tPrincipal = new ArrayList<>();
         loadWorld();
     }
+
+    public ArrayList<String> getNombresTerritorios(){
+        return new ArrayList<>(mapaNombresTerritorios.keySet());
+    }
+
 
 //    public void loadWorld() {
 //        String line;
@@ -78,15 +83,15 @@ public class Mapa {
         cargarNombres();
         for (int i = 0; i < nombres.size(); i++) {
             Territorio territorio = new Territorio(tPrincipal.get(i));
-            lista.put(tPrincipal.get(i),territorio);
+            mapaNombresTerritorios.put(tPrincipal.get(i),territorio);
         }
-        for (int i = 0; i <lista.size(); i++) {
+        for (int i = 0; i < mapaNombresTerritorios.size(); i++) {
             List<String> vString = nombres.get(tPrincipal.get(i));
             ArrayList<Territorio> vecinos = new ArrayList<>();
-            for (int j = 0; j < vString.size(); j++) {
-                vecinos.add(lista.get(vString.get(j)));
+            for (String s : vString) {
+                vecinos.add(mapaNombresTerritorios.get(s));
             }
-            lista.get(tPrincipal.get(i)).setVecinos(vecinos);
+            mapaNombresTerritorios.get(tPrincipal.get(i)).setVecinos(vecinos);
         }
         System.out.println(nombres.toString());
     }
@@ -99,8 +104,14 @@ public class Mapa {
         return new ArrayList<>(nombres.keySet());
     }
 
-    public ArrayList<String> getVecinos(String territorio){
-        return (ArrayList<String>) nombres.get(territorio);
+    public ArrayList<Territorio> getVecinos(String territorio){
+        ArrayList<Territorio> result = new ArrayList<>();
+        for (Map.Entry<String, Territorio> ter : mapaNombresTerritorios.entrySet()) {
+            if (ter.equals(territorio)){
+                result = ter.getValue().getVecinos();
+            }
+        }
+        return result;
     }
     @Override
     public String toString() {
