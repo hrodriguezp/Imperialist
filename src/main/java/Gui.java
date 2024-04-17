@@ -1,9 +1,7 @@
-import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Gui {
-
     public static void mostrarMenu() {
         System.out.println("*************************************************");
         System.out.println("*   I   M   P   E   R   I   A   L   I   S   T   *");

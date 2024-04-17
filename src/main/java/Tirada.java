@@ -79,4 +79,8 @@ public class Tirada {
         return perdidas;
     }
 
+    public void setNumDados(int numDados){
+        this.numDados = numDados;
+    }
+
 }

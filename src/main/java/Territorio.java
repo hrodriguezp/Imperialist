@@ -5,12 +5,13 @@ public class Territorio {
     private String nombre;
     private int numEjercitos;
     private ArrayList<Territorio> vecinos;
+    private Jugador propietario;
 
     public Territorio(String nombre) {
         this.nombre = nombre;
         this.numEjercitos = 1;
         this.vecinos = new ArrayList<>();
-        //loadVecinos();
+        this.propietario = new Jugador();
     }
 
     public Territorio(String nombre, ArrayList<Territorio> vecinos){
@@ -19,12 +20,6 @@ public class Territorio {
         this.vecinos = vecinos;
 
     }
-
-    private void loadVecinos(){
-        Mapa map = new Mapa();
-        vecinos = map.getVecinos(nombre);
-    }
-
 
     public void atacarTerritorio(int tPerdidas){
         this.numEjercitos -= tPerdidas;
@@ -35,6 +30,14 @@ public class Territorio {
 
     public int getNumEjercitos() {
         return numEjercitos;
+    }
+
+    public void setPropietario(Jugador propietario){
+        this.propietario = propietario;
+    }
+
+    public Jugador getPropietario(){
+        return propietario;
     }
 
     public void setNumEjercitos(int numEjercitos) {
@@ -55,6 +58,15 @@ public class Territorio {
         return vecinos;
     }
 
+    public boolean esVecino(Territorio territorio){
+        for (Territorio vecino : vecinos) {
+            if(vecino.getNombre().equals(territorio)){
+                return true;
+            }
+        }
+        return false;
+    }
+
     public ArrayList<String> getNombresVecinos() {
         ArrayList<String> vecinosCast = new ArrayList<String>();
         for (Territorio s : vecinos) {
@@ -71,6 +83,10 @@ public class Territorio {
 
     public void addVecino(Territorio territorio) {
         vecinos.add(territorio);
+    }
+
+    public void pierdeEjercito(){
+        numEjercitos--;
     }
 
     //TODO

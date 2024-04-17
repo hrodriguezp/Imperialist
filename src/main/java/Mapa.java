@@ -55,17 +55,6 @@ public class Mapa {
             throw new RuntimeException(e);
         }
     }
-
-
-    public void agregarTerritorio(String nombreTerritorio, List<String> vecinos) {
-        Territorio territorio = new Territorio(nombreTerritorio);
-        for (String vecino : vecinos) {
-            territorio.addVecino(vecino); // en vez de utilizar el addVecino() de String hay que usar el de Territorio : @Hugo
-        }
-        mapaNombresTerritorios.put(nombreTerritorio, territorio);
-    }
-
-
     public List<String> getTerritorios() {
         return new ArrayList<>(mapaNombresTerritorios.keySet());
     }
