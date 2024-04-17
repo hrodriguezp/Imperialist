@@ -9,7 +9,8 @@ public class Territorio {
     public Territorio(String nombre) {
         this.nombre = nombre;
         this.numEjercitos = 1;
-        loadVecinos();
+        this.vecinos = new ArrayList<>();
+        //loadVecinos();
     }
 
     public Territorio(String nombre, ArrayList<Territorio> vecinos){
@@ -65,6 +66,10 @@ public class Territorio {
 
     public void addVecino(String nVecino) {
         Territorio territorio = new Territorio(nVecino);
+        vecinos.add(territorio);
+    }
+
+    public void addVecino(Territorio territorio) {
         vecinos.add(territorio);
     }
 

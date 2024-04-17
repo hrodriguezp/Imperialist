@@ -31,17 +31,26 @@ public class Mapa {
                 if (line.isEmpty()) { continue; }
                 String[] a = line.split(":");
                 String nombreTerritorio = a[0].trim();
-                Territorio territorio = new Territorio(nombreTerritorio);
+                Territorio territorio = mapaNombresTerritorios.get(nombreTerritorio);
+                if (territorio == null) {
+                    territorio = new Territorio(nombreTerritorio);
+                    mapaNombresTerritorios.put(nombreTerritorio, territorio);
+                }
 
                 if (a.length > 1) {
-                    String[] vecinos = a[1].trim().split(",");
-                    for (String vecino : vecinos) {
-                        String nVecino = vecino.trim();
-                        territorio.addVecino(nVecino);
+                    String[] nombresVecinos = a[1].trim().split(",");
+                    for (String nombreVecino : nombresVecinos) {
+                        nombreVecino = nombreVecino.trim();
+
+                        Territorio territorioVecino = mapaNombresTerritorios.get(nombreVecino);
+                        if (territorioVecino==null){
+                            territorioVecino = new Territorio(nombreVecino);
+                            mapaNombresTerritorios.put(nombreVecino, territorioVecino);
+                        }
+                        territorio.addVecino(territorioVecino);
                     }
                 }
 
-                mapaNombresTerritorios.put(nombreTerritorio, territorio);
             }
             reader.close();
         } catch (FileNotFoundException e) {
