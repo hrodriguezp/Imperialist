@@ -64,10 +64,10 @@ public class Territorio {
         return vecinosCast;
     }
 
-    public void addVecino(String nVecino) {
-        Territorio territorio = new Territorio(nVecino);
-        vecinos.add(territorio);
-    }
+//    public void addVecino(String nVecino) {
+//        Territorio territorio = new Territorio(nVecino);
+//        vecinos.add(territorio);
+//    }
 
     public void addVecino(Territorio territorio) {
         vecinos.add(territorio);

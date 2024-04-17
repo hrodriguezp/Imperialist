@@ -4,14 +4,10 @@ import java.util.*;
 public class Mapa {
 
     private Map<String, Territorio> mapaNombresTerritorios;
-   // private Map<String, List<String>> nombres;
-    //private ArrayList<String> tPrincipal;
 
 
     public Mapa() {
         this.mapaNombresTerritorios = new LinkedHashMap<>();
-       // this.nombres = new LinkedHashMap<>();
-       // this.tPrincipal = new ArrayList<>();
         loadWorld();
     }
 
@@ -59,50 +55,12 @@ public class Mapa {
             throw new RuntimeException(e);
         }
     }
-//
-//    public void cargarNombres() {
-//        String line;
-//        File file = new File(Ctes.PATH_TERRITORIOS);
-//        try {
-//            BufferedReader reader = new BufferedReader(new FileReader(file));
-//            while ( (line = reader.readLine()) != null ) {
-//                if (line.isEmpty()) { continue; }
-//                String[] a = line.split(Ctes.EXP_TERRITORIO_SPLITTER);
-//                String [] st = a[0].split(":");
-//                String territorioPrincipal = st[0];
-//                tPrincipal.add(territorioPrincipal);
-//                String[] vecinos = st[1].split(", ");
-//                List<String> vecinosTOLIST = new ArrayList<>(Arrays.stream(vecinos).toList());
-//                nombres.put(territorioPrincipal,vecinosTOLIST);
-//            }
-//        } catch (FileNotFoundException e) {
-//            throw new RuntimeException(e);
-//        } catch (IOException e) {
-//            throw new RuntimeException(e);
-//        }
-//    }
-//
-//    public void loadWorld(){
-//        cargarNombres();
-//        for (int i = 0; i < nombres.size(); i++) {
-//            Territorio territorio = new Territorio(tPrincipal.get(i));
-//            mapaNombresTerritorios.put(tPrincipal.get(i),territorio);
-//        }
-//        for (int i = 0; i < mapaNombresTerritorios.size(); i++) {
-//            List<String> vString = nombres.get(tPrincipal.get(i));
-//            ArrayList<Territorio> vecinos = new ArrayList<>();
-//            for (String s : vString) {
-//                vecinos.add(mapaNombresTerritorios.get(s));
-//            }
-//            mapaNombresTerritorios.get(tPrincipal.get(i)).setVecinos(vecinos);
-//        }
-//        System.out.println(nombres.toString());
-//    }
+
 
     public void agregarTerritorio(String nombreTerritorio, List<String> vecinos) {
         Territorio territorio = new Territorio(nombreTerritorio);
         for (String vecino : vecinos) {
-            territorio.addVecino(vecino);
+            territorio.addVecino(vecino); // en vez de utilizar el addVecino() de String hay que usar el de Territorio : @Hugo
         }
         mapaNombresTerritorios.put(nombreTerritorio, territorio);
     }
@@ -117,7 +75,7 @@ public class Mapa {
     }
     @Override
     public String toString() {
-//        return nombres.toString();
+
         return mapaNombresTerritorios.toString();
     }
     public void pintar(){
