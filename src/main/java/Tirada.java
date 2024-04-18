@@ -83,4 +83,7 @@ public class Tirada {
         this.numDados = numDados;
     }
 
+    public int getNumDados() {
+        return numDados;
+    }
 }

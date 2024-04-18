@@ -76,7 +76,7 @@ public class Jugador {
                 } else {
                     tiradaAtacado.setNumDados(atacante.getNumEjercitos());
                 }
-                for (int i = 1; i <= atacante.getNumEjercitos(); i++) {
+                for (int i = 1; i <= tiradaAtacante.getNumDados(); i++) {
                     if (atacado.getNumEjercitos()>=1) {
                         if (tiradaAtacante.getValor(i) <= tiradaAtacado.getValor(i)) {
                             atacante.pierdeEjercito();
@@ -87,9 +87,9 @@ public class Jugador {
                         return;
                     }
                 }
-                if (atacante.getNumEjercitos()>0){
+                if (atacado.getNumEjercitos()>0){
                     atacado.setPropietario(atacante.getPropietario());
-                    System.out.println("El territorio " + atacado.getNombre() + ", ha sido conquistado por " + atacado.getPropietario().getNombre());
+                    System.out.println("El territorio " + atacado.getNombre() + ", ha sido conquistado por " + atacante.getPropietario().getNombre());
                 } else {
                     //Por terminar
                 }
@@ -101,7 +101,7 @@ public class Jugador {
 
     public boolean estaTerritorio(Territorio territorio){
         for (Territorio territorio1 : territorios) {
-            if (territorio1.getNombre().equals(territorio)){
+            if (territorio1.getNombre().equals(territorio.getNombre())){
                 return true;
             }
         }

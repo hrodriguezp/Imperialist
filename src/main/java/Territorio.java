@@ -60,7 +60,7 @@ public class Territorio {
 
     public boolean esVecino(Territorio territorio){
         for (Territorio vecino : vecinos) {
-            if(vecino.getNombre().equals(territorio)){
+            if(vecino.getNombre().equals(territorio.getNombre())){
                 return true;
             }
         }

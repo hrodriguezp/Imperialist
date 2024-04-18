@@ -102,17 +102,39 @@ public class Juego {
         }
     }
 
-
+    public int territoriosARepartir() {
+        switch (jugadores.size()) {
+            case 2 -> {
+                return Ctes.NUM_EJERCITOS2;
+            }
+            case 3 -> {
+                return Ctes.NUM_EJERCITOS3;
+            }
+            case 4 -> {
+                return Ctes.NUM_EJERCITOS4;
+            }
+            case 5 -> {
+                return Ctes.NUM_EJERCITOS5;
+            }
+            case 6 -> {
+                return Ctes.NUM_EJERCITOS6;
+            }
+        }
+        return 0;
+    }
 
     public void repartirTerritorios() {
         //TODO: Sin terminar
         mapa = new Mapa();
         List<String> territorios = mapa.getTerritorios();
         Collections.shuffle(territorios);
-        for (int i = 0; i < jugadores.size(); i++) {
+        for (Jugador jugador : jugadores) {
             for (String territorio : territorios) {
-                jugadores.get(i).addTerritorios(mapa.getTerritorio(territorio));
+                if (jugador.getTerritorios().size() == territoriosARepartir()) {
+                    jugador.addTerritorios(mapa.getTerritorio(territorio));
+                }
             }
+
         }
     }
 
@@ -126,40 +148,6 @@ public class Juego {
     public void jugarJugada() {
         //TODO Jugada de un jugador activo
         avanzarTurno();
-    }
-
-    public void atacar(){
-        ArrayList<Territorio> extraerTerritorios = Gui.leerAtaque();
-        Territorio territorio = extraerTerritorios.get(0);
-        Territorio territorioAtacado = extraerTerritorios.get(1);
-        Jugador jActivo = jugadores.get(turno);
-        ArrayList<Territorio> territorios = jActivo.getTerritorios();
-            if (territorios.contains(territorio)){
-                    if (territorio.getVecinos().contains(territorioAtacado)){
-                     //TODO
-                        while (territorio.getNumEjercitos() > 0 || territorioAtacado.getNumEjercitos() > 0){
-                            int resultado = getResultado(territorio, territorioAtacado);
-                            switch (resultado){
-                                case 2:
-                                    territorio.atacarTerritorio(2);
-                                    break;
-                                case 1:
-                                    territorio.atacarTerritorio(1);
-                                    break;
-                                case 0:
-                                    territorio.atacarTerritorio(1);
-                                    territorioAtacado.atacarTerritorio(1);
-                                    break;
-                                case -1:
-                                    territorioAtacado.atacarTerritorio(1);
-                                    break;
-                                case -2:
-                                    territorioAtacado.atacarTerritorio(2);
-                                    break;
-                            }
-                }
-            }
-        }
     }
 
     private static int getResultado(Territorio territorio, Territorio territorioAtacado) {
