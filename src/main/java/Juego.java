@@ -72,7 +72,7 @@ public class Juego {
 
 
 
-    public void crearJugadores() {
+    public void repartirEjercitos() {
         switch (jugadores.size()) {
             case 2 -> {
                 for (Jugador jugador : jugadores) {
@@ -102,24 +102,24 @@ public class Juego {
         }
     }
 
+
+
     public void repartirTerritorios() {
         //TODO: Sin terminar
         mapa = new Mapa();
         List<String> territorios = mapa.getTerritorios();
         Collections.shuffle(territorios);
-        int numJugadores = jugadores.size();
-        int numTerritorio = 0;
-        for (String territorio : territorios) {
-            Jugador jugadorActual = jugadores.get(numTerritorio % numJugadores);
-            Territorio terr = new Territorio(territorio);
-            jugadorActual.addTerritorios(terr);
-            numTerritorio++;
+        for (int i = 0; i < jugadores.size(); i++) {
+            for (String territorio : territorios) {
+                jugadores.get(i).addTerritorios(mapa.getTerritorio(territorio));
+            }
         }
     }
 
 
     public void jugar() {
         //TODO Jugar partida completa
+        repartirTerritorios();
     }
 
 

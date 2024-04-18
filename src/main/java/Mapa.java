@@ -73,6 +73,10 @@ public class Mapa {
         }
     }
 
+    public Territorio getTerritorio(String territorio){
+        mapaNombresTerritorios.get(territorio);
+    }
+
     public static void main(String[] args) {
         Mapa mapa = new Mapa();
         mapa.pintar();
