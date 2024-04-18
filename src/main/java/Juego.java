@@ -45,12 +45,21 @@ public class Juego {
                 mostrarVecinos(territorio);
                 return false;
             case Ctes.OPC_ATACAR:
-                atacar();
+                //atacar();
+                realizarAtaque();
                 return false;
             default:
                 return false;
         }
     }
+
+    private void realizarAtaque() {
+        ArrayList<Territorio> participantes = Gui.leerAtaque();
+        Territorio territorioAtacante = participantes.get(0);
+        Territorio territorioAtacado = participantes.get(1);
+        jugadores.get(turno).atacar(territorioAtacante, territorioAtacado);
+    }
+
     private void mostrarMapa() {
         mapa.pintar();
     }
