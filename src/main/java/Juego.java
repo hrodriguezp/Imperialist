@@ -6,33 +6,31 @@ public class Juego {
     private ArrayList<Jugador> jugadores;
 
     private int turno;
-
     private Mapa mapa;
+    private boolean fin;
 
     // endregion
 
     public Juego() {
         this.mapa = new Mapa();
+        fin = false;
         jugadores = Gui.leerJugadores();
     }
-
     public void run() {
         int numOpc;
         boolean bExit = false;
-
-        mapa.loadWorld();
 
         while (!bExit) {
             Gui.mostrarMenu();
             numOpc = Gui.leerOpcion();
             bExit= ejecutarOpcion(numOpc);
         }
-
     }
 
     private boolean ejecutarOpcion(int numOpc) {
         switch (numOpc) {
             case Ctes.OPC_EXIT:
+                fin = true;
                 return true;
             case Ctes.OPC_MAPA:
                 mostrarMapa();
@@ -45,19 +43,18 @@ public class Juego {
                 mostrarVecinos(territorio);
                 return false;
             case Ctes.OPC_ATACAR:
-                //atacar();
-                realizarAtaque();
-                return false;
+                return realizarAtaque();
             default:
                 return false;
         }
     }
 
-    private void realizarAtaque() {
+    private boolean realizarAtaque() {
         ArrayList<Territorio> participantes = Gui.leerAtaque();
         Territorio territorioAtacante = participantes.get(0);
         Territorio territorioAtacado = participantes.get(1);
         jugadores.get(turno).atacar(territorioAtacante, territorioAtacado);
+        return true;
     }
 
     private void mostrarMapa() {
@@ -69,16 +66,6 @@ public class Juego {
     private ArrayList<Territorio> mostrarVecinos(String territorio) {
         return mapa.getVecinos(territorio);
     }
-
-
-//    public void presentacion() {
-//        int n = 93, m = 33;
-//        String s = "IMPERIALIST";
-//        System.out.println("~".repeat(n));
-//        System.out.println("~" + " ".repeat(m) + s + " ".repeat(m) + "~");
-//        System.out.println("~".repeat(n));
-//    }
-
 
 
     public void repartirEjercitos() {
@@ -111,8 +98,6 @@ public class Juego {
         }
     }
 
-
-
     public void repartirTerritorios() {
         mapa = new Mapa();
         List<String> territorios = mapa.getTerritorios();
@@ -128,14 +113,21 @@ public class Juego {
     }
 
     public void jugar() {
-        //TODO Jugar partida completa
         repartirTerritorios();
         repartirEjercitos();
+        while(fin){
+            jugarJugada();
+            if (jugadores.get(turno).getTerritorios().isEmpty()){
+                jugadores.remove(turno);
+            }
+            if (jugadores.size() == 1){
+                System.out.println("El ganador ha sido:" + jugadores.get(turno).getNombre());
+                return;
+            }
+        }
     }
-
-
     public void jugarJugada() {
-        //TODO Jugada de un jugador activo
+        run();
         avanzarTurno();
     }
 
@@ -150,8 +142,7 @@ public class Juego {
         }
         Tirada tiradaAtaque = new Tirada(atacante);
         Tirada tiradaDefensa = new Tirada(defensor);
-        int resultado = tiradaAtaque.compararTirada(tiradaDefensa);
-        return resultado;
+        return tiradaAtaque.compararTirada(tiradaDefensa);
     }
 
     public int getTurno() {
