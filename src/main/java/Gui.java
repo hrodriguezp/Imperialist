@@ -64,20 +64,16 @@ public class Gui {
      */
 
     public static ArrayList<Territorio> leerAtaque() {
-        System.out.println("Selecciona de tus territorios el que quieras usar para atacar");
-        /*
-        Sout(territorios del usuario activo)
-        Scanner(territorio que va a usar para atacar)
-        Comprobaciones de que el territorio es del usuario activo y tiene mas de una tropa en el.
-         */
-        System.out.println("Selecciona el territorio que quieres atacar");
-        /*
-        Sout(Lista de vecinos)
-        Scannner(Territorio vecino que va aatacar)
-        Comprobaciones de que el territorio que se va a atacar sea vecino y que sea de un jugador distinto al activo
-         */
-        //TODO
+        Scanner scanner = new Scanner(System.in);
         ArrayList<Territorio> territorios = new ArrayList<>();
+        System.out.println("Selecciona de tus territorios el que quieras usar para atacar");
+        String tAtacante = scanner.nextLine();
+
+        System.out.println("Selecciona el territorio que quieres atacar");
+        String tDefensor = scanner.nextLine();
+
+        //TODO
+
         return territorios;
     }
 }
