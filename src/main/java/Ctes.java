@@ -9,12 +9,6 @@ public class Ctes {
     public static final int NUM_EJERCITOS4 = 30;
     public static final int NUM_EJERCITOS5 = 25;
     public static final int NUM_EJERCITOS6 = 20;
-    public static final int NUM_TERRITORIOS2 = 21;
-    public static final int NUM_TERRITORIOS3 = 14;
-    public static final int NUM_TERRITORIOS4 = 10;
-    public static final int NUM_TERRITORIOS5 = 8;
-    public static final int NUM_TERRITORIOS6 = 7;
-
     public static final int OPC_EXIT = 0;
     public static final int OPC_MAPA = 1;
     public static final int OPC_TERRITORIOS = 2;

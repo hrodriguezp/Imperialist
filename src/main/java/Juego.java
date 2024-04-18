@@ -85,72 +85,52 @@ public class Juego {
         switch (jugadores.size()) {
             case 2 -> {
                 for (Jugador jugador : jugadores) {
-                    jugador.setEjercitoDisponible(Ctes.NUM_EJERCITOS2);
+                    jugador.setEjercitoDisponible(Ctes.NUM_EJERCITOS2 - jugador.getTerritorios().size());
                 }
             }
             case 3 -> {
                 for (Jugador jugador : jugadores) {
-                    jugador.setEjercitoDisponible(Ctes.NUM_EJERCITOS3);
+                    jugador.setEjercitoDisponible(Ctes.NUM_EJERCITOS3 - jugador.getTerritorios().size());
                 }
             }
             case 4 -> {
                 for (Jugador jugador : jugadores) {
-                    jugador.setEjercitoDisponible(Ctes.NUM_EJERCITOS4);
+                    jugador.setEjercitoDisponible(Ctes.NUM_EJERCITOS4 - jugador.getTerritorios().size());
                 }
             }
             case 5 -> {
                 for (Jugador jugador : jugadores) {
-                    jugador.setEjercitoDisponible(Ctes.NUM_EJERCITOS5);
+                    jugador.setEjercitoDisponible(Ctes.NUM_EJERCITOS5 - jugador.getTerritorios().size());
                 }
             }
             case 6 -> {
                 for (Jugador jugador : jugadores) {
-                    jugador.setEjercitoDisponible(Ctes.NUM_EJERCITOS6);
+                    jugador.setEjercitoDisponible(Ctes.NUM_EJERCITOS6 - jugador.getTerritorios().size());
                 }
             }
         }
     }
 
-    public int territoriosARepartir() {
-        switch (jugadores.size()) {
-            case 2 -> {
-                return Ctes.NUM_EJERCITOS2;
-            }
-            case 3 -> {
-                return Ctes.NUM_EJERCITOS3;
-            }
-            case 4 -> {
-                return Ctes.NUM_EJERCITOS4;
-            }
-            case 5 -> {
-                return Ctes.NUM_EJERCITOS5;
-            }
-            case 6 -> {
-                return Ctes.NUM_EJERCITOS6;
-            }
-        }
-        return 0;
-    }
+
 
     public void repartirTerritorios() {
-        //TODO: Sin terminar
         mapa = new Mapa();
         List<String> territorios = mapa.getTerritorios();
         Collections.shuffle(territorios);
-        for (Jugador jugador : jugadores) {
+        int n = 0;
             for (String territorio : territorios) {
-                if (jugador.getTerritorios().size() == territoriosARepartir()) {
-                    jugador.addTerritorios(mapa.getTerritorio(territorio));
-                }
+                jugadores.get(n).addTerritorios(mapa.getTerritorio(territorio));
+                n++;
+                    if (n > jugadores.size()){
+                        n = 0;
+                    }
             }
-
-        }
     }
-
 
     public void jugar() {
         //TODO Jugar partida completa
         repartirTerritorios();
+        repartirEjercitos();
     }
 
 
