@@ -62,6 +62,7 @@ public class Jugador {
     }
 
     public void atacar(Territorio atacante, Territorio atacado){
+        //Por terminar
         Tirada tiradaAtacante = new Tirada(3);
         Tirada tiradaAtacado = new Tirada(2);
         if (atacante.esVecino(atacado)){
@@ -91,7 +92,8 @@ public class Jugador {
                     atacado.setPropietario(atacante.getPropietario());
                     System.out.println("El territorio " + atacado.getNombre() + ", ha sido conquistado por " + atacante.getPropietario().getNombre());
                 } else {
-                    //Por terminar
+                    atacante.setPropietario(atacado.getPropietario());
+                    System.out.println("El territorio " + atacante.getNombre() + ", ha sido conquistado por " + atacado.getPropietario().getNombre());
                 }
             }
         }
