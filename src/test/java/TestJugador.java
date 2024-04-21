@@ -74,6 +74,7 @@ class TestJugador {
         assertEquals(10, jugador.getEjercitoDisponible());
     }
 
+    @Test
     void testColocarEjercitosPrincipio_suficientesEjercitos() {
         //TODO: DONE
         Territorio territorio = new Territorio("Territorio");
