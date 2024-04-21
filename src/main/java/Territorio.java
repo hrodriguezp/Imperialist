@@ -92,13 +92,15 @@ public class Territorio {
     //TODO
     @Override
     public String toString() {
-        return "Territorio{" +
-                "nombre='" + nombre + '\'' +
-                ", propietario=" +
-                ", numEjercitos=" + numEjercitos +
-                ", vecinos=" + vecinos +
-                '}';
+        StringBuilder sb = new StringBuilder();
+        sb.append("Territorio{");
+        sb.append("nombre='").append(nombre).append('\'');
+        sb.append(", numEjercitos=").append(numEjercitos);
+        sb.append(", vecinos=[");
+        for (Territorio vecino : vecinos) {
+            sb.append(vecino.getNombre()).append(", ");
+        }
+        sb.append("]}");
+        return sb.toString();
     }
-
-
 }
