@@ -44,8 +44,8 @@ class TestJugador {
     @Test
     void testSetNombre() {
         //TODO: DONE
-        jugador.setNombre("NuevoNombre");
-        assertEquals("NuevoNombre", jugador.getNombre());
+        jugador.setNombre("Asier");
+        assertEquals("Asier", jugador.getNombre());
     }
 
     @Test
